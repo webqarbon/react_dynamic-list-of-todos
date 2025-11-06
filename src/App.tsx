@@ -38,6 +38,14 @@ export const App: React.FC = () => {
     return matchesStatus && matchesQuery;
   });
 
+  const onSelectTodo = (todo: Todo) => {
+    if (selectedTodo && selectedTodo.id === todo.id) {
+      setSelectedTodo(null);
+    } else {
+      setSelectedTodo(todo);
+    }
+  };
+
   return (
     <>
       <div className="section">
@@ -62,7 +70,7 @@ export const App: React.FC = () => {
               <TodoList
                 todos={filteredTodos}
                 selectedTodo={selectedTodo || undefined}
-                onSelectTodo={todo => setSelectedTodo(todo)}
+                onSelectTodo={onSelectTodo}
               />
             </div>
           </div>
